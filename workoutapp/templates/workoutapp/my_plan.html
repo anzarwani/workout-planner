@@ -8,15 +8,26 @@
 
 
     <h1>My Plans</h1>
+    
+<table>
+    <tr>
+        <th>Day</th>
+        <th>Category</th>
+        <th>Exercise</th>
+        <th>Action</th>
+      </tr>
 
-    <ul>
+      {% for plan in my_plan %}
+      <tr>
+        <td>{{ plan.day }}</td>
+        <td>{{ plan.category }}</td>
+        <td>{{ plan.exercise }}</td>
+        <td><a href="{% url 'create_plan' %}" class="btn btn-lg btn-secondary">Update</a></td>
+      </tr>
+      {% endfor %}
 
-   {% for plan in my_plan %}
+    </table>
 
-   <li> {{ plan.day }} |  {{ plan.category }} |  {{ plan.exercise }}</li>
-
-   {% endfor %}
-
-</ul>
+      
 
 {% endblock %}

@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
-from .models import planTable
+from .models import planTable, itemTable, workoutTable
 from .forms import planForm
+
 # Create your views here.
 
 def index(request):
@@ -72,18 +75,21 @@ def createPlan(request):
         form = planForm(request.POST)
         
         if form.is_valid():
-            form.save()
             
+            plan = form.save(commit=False)
+            plan.user = request.user
+            plan.save()
             return redirect('index')
     
     
     context = {'form':form}
     return render(request, 'workoutapp/create_plan.html', context)
 
-
+@login_required(login_url='/register_user/')
 def myPlan(request):
-    
-    my_plan = planTable.objects.all()
-    
+        
+    my_plan = planTable.objects.filter(user=request.user)
+    print('user : ', request.user)
+    #print('data : ', my_plan)
     context = {'my_plan':my_plan}
     return render(request, 'workoutapp/my_plan.html', context)
