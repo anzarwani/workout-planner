@@ -1,0 +1,21 @@
+{% extends 'workoutapp/index.html' %}
+
+
+
+{% block content %}
+
+<br><br><br><br><br><br><br><br><br>
+
+<form action="" method="POST">
+
+    {% csrf_token %}
+
+    {{form}}
+
+
+
+    <input type="submit" name="submit">
+</form>
+
+
+{% endblock %}

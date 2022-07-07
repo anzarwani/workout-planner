@@ -1,0 +1,22 @@
+{% extends 'workoutapp/index.html' %}
+
+
+
+{% block content %}
+
+<br><br><br><br><br><br>
+
+
+    <h1>My Plans</h1>
+
+    <ul>
+
+   {% for plan in my_plan %}
+
+   <li> {{ plan.day }} |  {{ plan.category }} |  {{ plan.exercise }}</li>
+
+   {% endfor %}
+
+</ul>
+
+{% endblock %}

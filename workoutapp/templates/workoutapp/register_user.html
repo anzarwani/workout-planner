@@ -1,0 +1,38 @@
+{% extends 'workoutapp/index.html' %}
+
+
+{% block content %}
+<br><br><br><br><br><br>
+{% if form.errors %}
+
+
+
+    <p>FORM KO ERROR HAI, THEEK KARUN</p>
+
+    {% endif %}
+    <h1>Register</h1>
+
+    <form action="{% url 'register_user' %}" method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        
+
+
+
+        <input type="submit" value="submit" class="btn btn-secondary">
+    </form>
+
+    {% if messages %}
+
+    {% for message in messages %}
+
+        {{ message }}
+
+    {% endfor %}
+
+    {% endif %}
+
+
+
+{% endblock %}

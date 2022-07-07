@@ -1,0 +1,33 @@
+{% extends 'workoutapp/index.html' %}
+
+
+
+{% block content %}
+
+<br><br><br><br><br><br><br><br><br>
+
+{% if user.is_authenticated %}
+
+<main role="main" class="inner cover">
+    <h1 class="cover-heading">Hello "Anzar"</h1>
+    <p class="lead">Click Now to Start A New Routine</p>
+    <p class="lead">
+      <a href="#" class="btn btn-lg btn-secondary">Start</a>
+    </p>
+  </main>
+
+  {% else %}
+
+
+<main role="main" class="inner cover">
+    <h1 class="cover-heading">Workout Planner</h1>
+    <p class="lead">Register Now and Start Building Your Workout Routine</p>
+    <p class="lead">
+      <a href="{% url 'register_user' %}" class="btn btn-lg btn-secondary">Register Now</a>
+    </p>
+  </main>
+
+  {% endif %}
+
+
+{% endblock %}
