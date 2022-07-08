@@ -5,6 +5,6 @@ class planForm(ModelForm):
     
     class Meta:
         model = planTable 
-        fields = 'day', 'category', 'exercise'
+        fields = 'day', 'exercise'
 
 

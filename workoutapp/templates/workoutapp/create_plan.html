@@ -1,5 +1,5 @@
 {% extends 'workoutapp/index.html' %}
-
+{% load crispy_forms_tags %}
 
 
 {% block content %}
@@ -10,7 +10,7 @@
 
     {% csrf_token %}
 
-    {{form}}
+    {{ form|crispy }}
 
 
 

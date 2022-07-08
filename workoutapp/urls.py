@@ -9,4 +9,5 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('create_plan/', views.createPlan, name='create_plan'),
     path('my_plan/', views.myPlan, name='my_plan'),
+    path('delete_plan/<str:field_id>', views.deletePlan, name='delete_plan'),
 ]

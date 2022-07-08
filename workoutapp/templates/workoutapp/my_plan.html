@@ -12,7 +12,6 @@
 <table>
     <tr>
         <th>Day</th>
-        <th>Category</th>
         <th>Exercise</th>
         <th>Action</th>
       </tr>
@@ -20,9 +19,8 @@
       {% for plan in my_plan %}
       <tr>
         <td>{{ plan.day }}</td>
-        <td>{{ plan.category }}</td>
         <td>{{ plan.exercise }}</td>
-        <td><a href="{% url 'create_plan' %}" class="btn btn-lg btn-secondary">Update</a></td>
+        <td><a href="{% url 'delete_plan' plan.id %}" class="btn btn-lg btn-secondary">Delete</a></td>
       </tr>
       {% endfor %}
 

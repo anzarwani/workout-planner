@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
-from .models import planTable, itemTable, workoutTable
+from .models import planTable, itemTable
 from .forms import planForm
 
 # Create your views here.
@@ -14,8 +14,9 @@ def index(request):
     return render(request, 'workoutapp/index.html', {})
 
 def home(request):
+    user = request.user
     
-    return render(request, 'workoutapp/home.html', {})
+    return render(request, 'workoutapp/home.html', {'user':user})
 
 
 def login_user(request):
@@ -89,7 +90,15 @@ def createPlan(request):
 def myPlan(request):
         
     my_plan = planTable.objects.filter(user=request.user)
+    order_plan = my_plan.order_by('-day')
     print('user : ', request.user)
     #print('data : ', my_plan)
-    context = {'my_plan':my_plan}
+    context = {'my_plan':order_plan}
     return render(request, 'workoutapp/my_plan.html', context)
+
+def deletePlan(request, field_id):
+    itemDel = planTable.objects.get(pk = field_id)
+    
+    itemDel.delete()
+
+    return redirect('my_plan')

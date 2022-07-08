@@ -1,11 +1,9 @@
 from django.contrib import admin
 
-from .models import itemTable, workoutTable, planTable
+from .models import itemTable, planTable
 
 # Register your models here.
 
-
-admin.site.register(workoutTable)
 
 admin.site.register(itemTable)
 
