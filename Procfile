@@ -1,1 +1,1 @@
-web:gunicorn workout.wsgi
+web: gunicorn workout.wsgi
